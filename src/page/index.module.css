@@ -1,33 +1,6 @@
 /** @format */
-
-.wrapper {
-  display: flex;
-  align-items: center;
-}
-
 .coverImage {
-  background-image: url('../assets/images/cover.jpg');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  width: 50%;
-  height: 100vh;
-}
-
-.header {
-  padding: 1rem 1.5rem;
-}
-
-.headText {
-  font-size: 1.5rem;
-  line-height: calc(32 / 24);
-  font-weight: 500;
-  text-transform: uppercase;
-}
-
-.brand {
-  font-size: 2rem;
-  color: var(--secondary);
+  display: none;
 }
 
 .formWrapper {
@@ -40,19 +13,19 @@
   justify-content: center;
   flex-direction: column;
   height: 100vh;
-  padding: 2rem 3rem;
+  padding: 2rem 1rem;
 }
 
 .form {
   background-color: var(--secondary);
-  padding: 5rem 2rem;
+  padding: 5rem 1rem;
   border-radius: 0.5rem;
 }
 
 .welcome {
-  font-size: 2rem;
+  font-size: 1.5rem;
   font-weight: 600;
-  line-height: calc(64 / 32);
+  line-height: calc(32 / 24);
   color: white;
   text-transform: uppercase;
   margin-bottom: 1.5rem;
@@ -89,18 +62,18 @@
 }
 
 .signinBtn {
-  padding: 0.75rem 1.5rem;
-  width: 100%;
-  max-width: 12.5rem;
-  color: white;
-  background-color: var(--neon);
-  border: none;
-  outline: none;
-  text-transform: uppercase;
-  font-weight: 600;
-  border-radius: 0.25rem;
   font-size: 1rem;
   line-height: calc(24 / 16);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: white;
+  background-color: var(--neon);
+  width: 100%;
+  max-width: 12.5rem;
+  border: none;
+  border-radius: 0.25rem;
+  outline: none;
+  padding: 0.75rem 1.5rem;
   cursor: pointer;
   transition: all 0.5s ease;
 }
@@ -129,4 +102,50 @@
   color: var(--neon);
   text-transform: uppercase;
   font-weight: 600;
+}
+
+@media (min-width: 1440px) {
+  .wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  .coverImage {
+    display: block;
+    background-image: url('../assets/images/cover.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 50%;
+    height: 100vh;
+  }
+
+  .header {
+    padding: 1rem 1.5rem;
+  }
+
+  .headText {
+    font-size: 1.5rem;
+    line-height: calc(32 / 24);
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .brand {
+    font-size: 2rem;
+    color: var(--secondary);
+  }
+
+  .formWrapper {
+    padding: 2rem 3rem;
+  }
+
+  .form {
+    padding: 5rem 3rem;
+  }
+
+  .welcome {
+    font-size: 2rem;
+    line-height: calc(48 / 32);
+  }
 }
