@@ -45,13 +45,18 @@
   margin-bottom: 0.5rem;
 }
 
+.email,
+.password {
+  margin-bottom: 1rem;
+}
+
 .input {
   background-color: transparent;
   outline: none;
   border: none;
   border-bottom: 1px solid var(--secondary-light);
   padding: 1rem 0.5rem;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   color: white;
   font-size: 1.25rem;
   width: 80%;
@@ -59,6 +64,12 @@
 
 .input::placeholder {
   color: white;
+}
+
+.error {
+  color: var(--primary);
+  font-weight: 600;
+  padding-left: 0.5rem;
 }
 
 .signinBtn {
@@ -76,6 +87,12 @@
   padding: 0.75rem 1.5rem;
   cursor: pointer;
   transition: all 0.5s ease;
+}
+
+.signinBtn:disabled,
+.signinBtn:hover:disabled {
+  filter: brightness(0.5);
+  cursor: no-drop;
 }
 
 .signinBtn:hover {
@@ -98,10 +115,23 @@
   font-weight: 600;
 }
 
+.signupWrap {
+  display: flex;
+  align-items: center;
+}
+
 .signup {
   color: var(--neon);
   text-transform: uppercase;
   font-weight: 600;
+  margin-right: 1rem;
+}
+
+.forward {
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--neon);
+  color: white;
 }
 
 @media (min-width: 1440px) {

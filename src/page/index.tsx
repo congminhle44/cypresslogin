@@ -1,15 +1,59 @@
 /** @format */
 
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
+
+import Forward from '../components/forward';
+import { emailValid, passwordValid } from '../validation';
 
 import styles from './index.module.css';
 
 interface Props {}
 
 const Login: FC<Props> = (props) => {
+  const [valid, setValid] = useState(false);
+
+  const [userErr, setUserErr] = useState({
+    email: '',
+    password: '',
+  });
+
+  let [mailValid, setMailValid] = useState(false);
+
+  let [_passwordValid, setPasswordValid] = useState(false);
+
   const handleSubmit = (e: any) => {
     e.preventDefault();
     alert('Log in success');
+  };
+
+  useEffect(() => {
+    setValid(mailValid && _passwordValid);
+  }, [mailValid, _passwordValid]);
+
+  const handleChange = (e: any) => {
+    let { name, value } = e.target;
+
+    let message = '';
+
+    switch (name) {
+      case 'email':
+        if (emailValid(value, 64) !== '') {
+          setMailValid(false);
+          message = emailValid(value, 64);
+        }
+        setMailValid((mailValid = message ? false : true));
+        break;
+
+      case 'password':
+        if (passwordValid(value.trim(), 255) !== '') {
+          setPasswordValid(false);
+          message = passwordValid(value.trim(), 255);
+        }
+        setPasswordValid((_passwordValid = message ? false : true));
+        break;
+    }
+
+    setUserErr({ ...userErr, [name]: message });
   };
 
   return (
@@ -38,24 +82,38 @@ const Login: FC<Props> = (props) => {
                 <input
                   className={styles.input}
                   type='email'
+                  name='email'
+                  onChange={handleChange}
                   placeholder='Type email'
                 />
+                <p className={styles.error}>{userErr.email}</p>
               </div>
               <div className={styles.password}>
                 <input
                   className={styles.input}
                   type='password'
+                  name='password'
+                  onChange={handleChange}
                   placeholder='Type password'
                 />
+                <p className={styles.error}>{userErr.password}</p>
               </div>
             </div>
-            <button type='submit' className={styles.signinBtn}>
+            <button
+              disabled={!valid}
+              type='submit'
+              className={styles.signinBtn}>
               Sign in
             </button>
           </div>
           <div className={styles.others}>
             <p className={styles.forgot}>Forgot your password?</p>
-            <p className={styles.signup}>Sign up</p>
+            <div className={styles.signupWrap}>
+              <p className={styles.signup}>Sign up</p>
+              <div className={styles.forward}>
+                <Forward />
+              </div>
+            </div>
           </div>
         </form>
       </div>
