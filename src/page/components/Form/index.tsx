@@ -1,6 +1,7 @@
 /** @format */
 
-import React, { FC, useEffect, useState } from 'react';
+import React, { FC } from 'react';
+import { useForm } from 'react-hook-form';
 
 import Button from '../../../components/Button';
 
@@ -8,61 +9,40 @@ import Forward from '../../../components/icons/forward';
 
 import Input from '../../../components/Input';
 
-import { emailValid, passwordValid } from '../../../validation';
-
 import styles from './form.module.css';
 
 interface Props {}
 
+type Inputs = {
+  email?: string;
+  password?: string;
+};
+
 const Form: FC<Props> = (props) => {
-  const [valid, setValid] = useState(false);
+  const { register, handleSubmit, errors } = useForm<Inputs>();
 
-  const [userErr, setUserErr] = useState({
-    email: '',
-    password: '',
-  });
+  // eslint-disable-next-line
+  const emailPattern = /^(([^<>()\[\]\\.,;:\s-@#$!%^&*+=_/`?{}|'"]+(\.[^<>()\[\]\\.,;:\s-@_!#$%^&*()=+/`?{}|'"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
 
-  let [mailValid, setMailValid] = useState(false);
-
-  let [_passwordValid, setPasswordValid] = useState(false);
-
-  const handleSubmit = (e: any) => {
-    e.preventDefault();
-    alert('Log in success');
+  const switchErrors = (inputName: any) => {
+    switch (inputName.type) {
+      case 'required':
+        return 'This field is required';
+      case 'minLength':
+        return "This field doesn't meet the min length";
+      case 'maxLength':
+        return 'This field is out of max length';
+      case 'pattern':
+        return 'Wrong type of email';
+    }
   };
 
-  useEffect(() => {
-    setValid(mailValid && _passwordValid);
-  }, [mailValid, _passwordValid]);
-
-  const handleChange = (e: any) => {
-    let { name, value } = e.target;
-
-    let message = '';
-
-    switch (name) {
-      case 'email':
-        if (emailValid(value, 64) !== '') {
-          setMailValid(false);
-          message = emailValid(value, 64);
-        }
-        setMailValid((mailValid = message ? false : true));
-        break;
-
-      case 'password':
-        if (passwordValid(value.trim(), 255) !== '') {
-          setPasswordValid(false);
-          message = passwordValid(value.trim(), 255);
-        }
-        setPasswordValid((_passwordValid = message ? false : true));
-        break;
-    }
-
-    setUserErr({ ...userErr, [name]: message });
+  const submitEvent = (data: any) => {
+    alert('Login success');
   };
 
   return (
-    <form onSubmit={handleSubmit} className={styles.form}>
+    <form onSubmit={handleSubmit(submitEvent)} className={styles.form}>
       <div className={styles.formHead}>
         <p className={styles.welcome}>
           <span className={styles.highlight}>Welcome</span> to sign in
@@ -78,24 +58,27 @@ const Form: FC<Props> = (props) => {
             <Input
               type='email'
               name='email'
-              onChange={handleChange}
               placeHolder='Type email'
-              error={userErr.email}
+              refs={register({
+                required: true,
+                minLength: 6,
+                maxLength: 24,
+                pattern: emailPattern,
+              })}
+              error={errors.email && switchErrors(errors.email)}
             />
           </div>
           <div className={styles.password}>
             <Input
               type='password'
               name='password'
-              onChange={handleChange}
               placeholder='Type password'
-              error={userErr.password}
+              refs={register({ required: true, minLength: 6, maxLength: 24 })}
+              error={errors.password && switchErrors(errors.password)}
             />
           </div>
         </div>
-        <Button disabled={!valid} type='submit'>
-          Sign in
-        </Button>
+        <Button type='submit'>Sign in</Button>
       </div>
       <div className={styles.others}>
         <p className={styles.forgot}>Forgot your password?</p>
