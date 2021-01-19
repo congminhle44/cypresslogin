@@ -2,7 +2,7 @@
 
 import React, { FC } from 'react';
 
-import Forward from '../../../components/icons/forward';
+import Forward from '../../../components/Icons/forward';
 
 import Form from '../Form';
 

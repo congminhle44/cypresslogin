@@ -1,14 +1,15 @@
 /** @format */
 
 import React, { FC } from 'react';
+
 import { useForm } from 'react-hook-form';
 
 import Button from '../../../components/Button';
 
-import Forward from '../../../components/icons/forward';
-
 import Input from '../../../components/Input';
+
 import { emailPattern } from '../../../helpers/pattern';
+
 import switchErrors from '../../../validation';
 
 import styles from './form.module.css';
@@ -33,7 +34,7 @@ const Form: FC<Props> = ({ submitEvent }) => {
             type='email'
             name='email'
             placeHolder='Type email'
-            refs={register({
+            ref={register({
               required: true,
               minLength: 6,
               maxLength: 24,
@@ -47,7 +48,7 @@ const Form: FC<Props> = ({ submitEvent }) => {
             type='password'
             name='password'
             placeholder='Type password'
-            refs={register({ required: true, minLength: 6, maxLength: 24 })}
+            ref={register({ required: true, minLength: 6, maxLength: 24 })}
             error={errors.password && switchErrors(errors.password)}
           />
         </div>
