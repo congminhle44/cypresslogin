@@ -25,16 +25,6 @@
   margin-bottom: 2rem;
 }
 
-.inputWrap {
-  margin-bottom: 0.5rem;
-}
-
-.email,
-.password {
-  height: 5.375rem;
-  margin-bottom: 1rem;
-}
-
 .others {
   display: flex;
   align-items: center;

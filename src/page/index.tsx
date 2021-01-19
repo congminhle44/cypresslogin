@@ -1,7 +1,8 @@
 /** @format */
 
 import React, { FC } from 'react';
-import Form from './components/Form';
+
+import FormWrap from './components/FormWrap';
 
 import styles from './index.module.css';
 
@@ -18,7 +19,7 @@ const Login: FC<Props> = (props) => {
         </div>
       </div>
       <div className={styles.formWrapper}>
-        <Form />
+        <FormWrap />
       </div>
     </div>
   );
