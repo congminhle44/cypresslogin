@@ -1,0 +1,22 @@
+{
+    "welcome":{
+        "1":"Welcome",
+        "2":"to sign in"
+    },
+    "forgot":{
+        "1":"Forgot your password?"
+    },
+    "placeholder":{
+        "email":"Type email",
+        "password":"Type password"
+    },
+    "signup":{
+        "1":"Sign up"
+    },
+    "errors":{
+        "required":"This field is required",
+        "minLength":"This field doesn't meet the min length",
+        "maxLength":"This field is out of max length",
+        "pattern":"Wrong type of email"
+    }
+}

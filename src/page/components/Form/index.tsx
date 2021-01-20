@@ -4,18 +4,19 @@ import React, { FC } from 'react';
 
 import { useForm } from 'react-hook-form';
 
+import { useTranslation } from 'react-i18next';
+
 import Button from '../../../components/Button';
 
 import Input from '../../../components/Input';
 
 import { emailPattern } from '../../../helpers/pattern';
 
-import switchErrors from '../../../validation';
-
 import styles from './form.module.css';
 
 interface Props {
   submitEvent?: any;
+  switchErrors?: any;
 }
 
 type Inputs = {
@@ -23,8 +24,10 @@ type Inputs = {
   password?: string;
 };
 
-const Form: FC<Props> = ({ submitEvent }) => {
+const Form: FC<Props> = ({ submitEvent, switchErrors }) => {
   const { register, handleSubmit, errors } = useForm<Inputs>();
+
+  const { t } = useTranslation();
 
   return (
     <form onSubmit={handleSubmit(submitEvent)} className={styles.formMain}>
@@ -33,7 +36,7 @@ const Form: FC<Props> = ({ submitEvent }) => {
           <Input
             type='email'
             name='email'
-            placeHolder='Type email'
+            placeholder={t('placeholder.email')}
             ref={register({
               required: true,
               minLength: 6,
@@ -47,7 +50,7 @@ const Form: FC<Props> = ({ submitEvent }) => {
           <Input
             type='password'
             name='password'
-            placeholder='Type password'
+            placeholder={t('placeholder.password')}
             ref={register({ required: true, minLength: 6, maxLength: 24 })}
             error={errors.password && switchErrors(errors.password)}
           />

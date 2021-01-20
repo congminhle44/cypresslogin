@@ -5,7 +5,7 @@ import React, { AllHTMLAttributes, FC } from 'react';
 import styles from './button.module.css';
 
 interface Props extends AllHTMLAttributes<HTMLButtonElement> {
-  onOK?: () => void;
+  onOK?: any;
   type?: any;
 }
 

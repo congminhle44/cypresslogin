@@ -1,0 +1,22 @@
+{
+    "welcome":{
+        "1":"Chào mừng bạn",
+        "2":"đến với đăng nhập"
+    },
+    "forgot":{
+        "1":"Quên mật khẩu?"
+    },
+    "placeholder":{
+        "email":"Nhập email",
+        "password":"Nhập mật khẩu"
+    },
+    "signup":{
+        "1":"Đăng ký"
+    },
+    "errors":{
+        "required":"Thông tin này là bắt buộc",
+        "minLength":"Vui lòng nhập đủ số kí tự tối thiểu",
+        "maxLength":"Vui lòng nhập ít hơn số kí tự tối đa",
+        "pattern":"Email không đúng định dạng"
+    }
+}
