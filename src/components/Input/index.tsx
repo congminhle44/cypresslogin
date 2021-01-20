@@ -6,19 +6,13 @@ import styles from './input.module.css';
 
 interface Props extends AllHTMLAttributes<HTMLInputElement> {
   error?: string;
-  placeHolder?: string;
 }
 
 const Input = forwardRef<HTMLInputElement, Props>(
-  ({ placeHolder, error, ...others }, ref: any) => {
+  ({ error, ...others }, ref) => {
     return (
       <div className={styles.wrap}>
-        <input
-          ref={ref}
-          className={styles.input}
-          placeholder={placeHolder}
-          {...others}
-        />
+        <input ref={ref} className={styles.input} {...others} />
         <p className={styles.error}>{error}</p>
       </div>
     );

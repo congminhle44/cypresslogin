@@ -1,0 +1,57 @@
+/** @format */
+
+.wrap {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.langWrap {
+  display: flex;
+  background-color: var(--secondary);
+  padding: 1.25rem 1rem;
+  border-radius: 1rem;
+}
+
+.en {
+  background-image: url('../../../assets/images/en.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 2rem;
+  height: 1.5rem;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.vi {
+  background-image: url('../../../assets/images/vi.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 2rem;
+  height: 1.5rem;
+  margin: 0 1.5rem;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.ko {
+  background-image: url('../../../assets/images/ko.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 2rem;
+  height: 1.5rem;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.en:hover,
+.vi:hover,
+.ko:hover {
+  transform: translateY(-15%);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.4);
+}
